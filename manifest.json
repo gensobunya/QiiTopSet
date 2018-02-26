@@ -1,0 +1,17 @@
+{
+	"manifest_version": 2,
+	"name": "QiiTopSet",
+	"version": "1.00",
+	"description": "You can change Qiita.com firstview.",
+
+"background":{
+	"scripts": ["trendIgnore.js"],
+	"persistent": true
+	},
+
+"permissions":[
+	"webRequest",
+	"webRequestBlocking",
+	 "*://qiita.com/*"
+	]
+}
