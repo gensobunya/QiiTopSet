@@ -3,8 +3,10 @@
 
 const qiitaBaseUrl = "https://qiita.com/";
 
-chrome.storage.local.get("redirectPage", (items)=>{
+chrome.storage.local.get({"redirectPage": "tag-feed" }, (items)=>{
+
 	let redirectFullUrl = qiitaBaseUrl + items.redirectPage;
+
 	chrome.webRequest.onBeforeRequest.addListener( (detail) =>{
 		return {redirectUrl : redirectFullUrl};
 	},
@@ -13,10 +15,11 @@ chrome.storage.local.get("redirectPage", (items)=>{
 	)
 	console.log("redirect to "+ qiitaBaseUrl + items.redirectPage);
 
+	//設定変更を監視
 	chrome.storage.onChanged.addListener((newItems)=>{
 		redirectFullUrl = qiitaBaseUrl + newItems.redirectPage.newValue;
 		console.log("change redirect url to" + redirectFullUrl);
-	})
-}
+		})
+	}
 )
 
