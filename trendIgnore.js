@@ -1,18 +1,16 @@
 //Qiitaのトップをタグフィードにリダイレクトする
+'use strict';
 
-chrome.webRequest.onBeforeRequest.addListener(
-	function( detail ) {
-		var qiitaFeedUrl = "https://qiita.com/tag-feed";
-		return {
-			redirectUrl: qiitaFeedUrl
-				//アクセス後はページ遷移ではなくページ描画しているので分岐不要（ラッキー）
-		};
-	}, 
-	{
-	urls: ["*://qiita.com/trend"] //リクエスト先がtrendになった場合発火
+const qiitaBaseUrl = "https://qiita.com/";
+
+chrome.storage.local.get("redirectPage", (items)=>{
+	chrome.webRequest.onBeforeRequest.addListener( (detail) =>{
+		return {redirectUrl : qiitaBaseUrl + items.redirectPage};
 	},
-	 [ 
-	"blocking" 
-	]
- );
-console.log('Redirect /trend->/tag-feed')
+		{urls: ["*://qiita.com/trend"]}, //リクエスト先がtrendになった場合発火
+		["blocking"]
+	)
+	console.log("redirect to "+ qiitaBaseUrl + items.redirectPage);
+}
+)
+

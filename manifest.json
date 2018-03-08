@@ -1,8 +1,9 @@
 {
 	"manifest_version": 2,
-	"name": "QiiTopSet",
-	"version": "1.00",
-	"description": "You can change Qiita.com firstview.",
+	"name": "Qiita tagfeed first",
+	"version": "2.0",
+
+	"description": "No more stupid Qiita trend!!!",
 
 "background":{
 	"scripts": ["trendIgnore.js"],
@@ -10,8 +11,13 @@
 	},
 
 "permissions":[
+	"storage",
 	"webRequest",
 	"webRequestBlocking",
 	 "*://qiita.com/*"
-	]
+	],
+"options_ui": {
+	"page": "pages/options.html",
+	"chrome_style": true
+    }
 }
