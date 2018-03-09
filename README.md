@@ -8,4 +8,4 @@ Qiitaのトップページをトレンド以外にしたいための人に作り
 
 ## Option
 
-[chrome://extension](chrome://extension) のオプションページよりリダイレクト先を「タグフィード」「タイムライン」どちらかに設定できます。
+[chrome://extension](chrome://extension) のオプションページよりリダイレクト先を「タグフィード」「タイムライン」「すべての投稿」どれかに設定できます。
